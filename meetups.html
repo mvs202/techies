@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Transportation Techies Meetups</title>
+<!-- Copyright 2020 Michael Schade, http://mvjantzen.com/ -->
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<base target="_blank">
+<style>
+body {
+  color: white;
+  background: #C51E25;
+  }
+blockquote, body, dd, p, td, li, th, div {
+  font-family: sans-serif;
+  font-size: 16px;
+  }
+td:first-child {
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+  }
+tr:hover td {
+  border-color: #FFFF00;
+  }
+tr:hover td:first-child {
+  opacity: 1;
+}
+td {
+  border: 1px solid transparent;
+  padding: 1px 10px;
+  vertical-align: top;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  transition: border-color 0.2s ease-out;
+  }
+a {
+  color: #FFFFFF;
+  text-decoration: none;
+  }
+a:hover {
+  text-decoration: underline;
+  }
+.maxWidth25pct {
+  max-width: 25vw;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+#title {
+  font-size: 30px;
+  margin-bottom: 24px;
+  }
+#center {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  }
+</style>
+<script>
+function dateStr(d) {
+  var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  return months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+}
+
+function postRSVPs() {
+  const JAN = 0; const FEB = 1; const MAR = 2; const APR = 3; const MAY =  4; const JUN =  5;
+  const JUL = 6; const AUG = 7; const SEP = 8; const OCT = 9; const NOV = 10; const DEC = 11;
+  venues = {
+    mobilitylab: {name:"Mobility Lab", city:"Arlington", state:"VA"},
+    kaiser: {name:"Kaiser Permanente Center for Total Health", city:"Washington", state:"DC"},
+    weworkwonderbread: {name:"WeWork Wonder Bread Factory", city:"Washington", state:"DC"},
+    weworkcrystalcity: {name:"WeWork Crystal City", city:"Arlington", state:"VA"},
+    wework80m: {name:"WeWork 80 M St SE", city:"Washington", state:"DC"},
+    weworkmanhattanlaundry: {name:"WeWork Manhattan Laundry", city:"Washington", state:"DC"},
+    artisphere: {name:"Artisphere Dome Theatre", city:"Arlington", state:"VA"},
+    renaissancedc: {name:"Renaissance Hotel", city:"Washington", state:"DC"},
+    hyattregencybaltimore: {name:"Hyatt Regency Baltimore", city:"Baltimore", state:"MD"},
+    dc1776: {name:"1776 (DC)", city:"Washington", state:"DC"},
+    arl1776: {name:"1776 (Crystal City)", city:"Arlington", state:"VA"},
+    wmata: {name:"WMATA HQ", city:"Washington", state:"DC"},
+    sparkboulder: {name:"Spark Boulder", city:"Boulder", state:"CO"},
+    hiltonportland: {name:"Hilton Portland", city:"Portland", state:"OR"},
+    wundergarten: {name:"REI Community Space at Wunder Garten", city:"Washington", state:"DC"},
+    conventioncenter: {name:"Washington Convention Center", city:"Washington", state:"DC"},
+    spacesnoma: {name:"Spaces NoMa", city:"Washington", state:"DC"},
+    socialtables: {name:"Social Tables", city:"Washington", state:"DC"},
+    blackcat: {name:"Backstage (Black Cat Red Room)", city:"Washington", state:"DC"},
+    devseed: {name:"Development Seed", city:"Washington", state:"DC"},
+    dewdropinn: {name:"Dew Drop Inn", city:"Washington", state:"DC"},
+  };
+  json = [
+    {name:"Metro Hack Night IX", id:"265978312", venue:"wmata", rsvps:157, time:new Date(2020, JAN, 22)},
+    {name:"Bike Hack Night XI", id:"264236635", venue:"dewdropinn", rsvps:106, time:new Date(2019, OCT, 16)},
+    {name:"Playing with Traffic VI", id:"260253921", venue:"spacesnoma", rsvps:98, time:new Date(2019, JUN, 17)},
+    {name:"Bikeshare Hack Night X", id:"259740420", venue:"weworkwonderbread", rsvps:127, time:new Date(2019, APR, 23)},
+    {name:"Bus Hack Night III", id:"257821274", venue:"wmata", rsvps:172, time:new Date(2019, FEB, 26)},
+    {name:"Bike Hack Night X", id:"256991003", venue:"weworkmanhattanlaundry", rsvps:153, time:new Date(2019, JAN, 10)},
+    {name:"Playing with Traffic V", id:"256261019", venue:"wework80m", rsvps:131, time:new Date(2018, NOV, 29)},
+    {name:"Bikeshare Hack Night IX", id:"254771050", venue:"wework80m", rsvps:150, time:new Date(2018, OCT, 24)},
+    {name:"Metro Hack Night VIII", id:"251905698", venue:"wmata", rsvps:154, time:new Date(2018, SEP, 18)},
+    {name:"Traincoding Show & Tell", id:"251055505", venue:"spacesnoma", rsvps:135, time:new Date(2018, AUG, 30)},
+    {name:"Bike Hack Night IX", id:"250993929", venue:"devseed", rsvps:121, time:new Date(2018, JUN, 19)},
+    {name:"Bikeshare Hack Night VIII", id:"245353650", venue:"blackcat", rsvps:179, time:new Date(2018, FEB, 13)},
+    {name:"Bike Hack Night VIII", id:"245217212", venue:"socialtables", rsvps:137, time:new Date(2018, JAN, 10)},
+    {name:"Playing with Traffic IV", id:"244693127", venue:"spacesnoma", rsvps:136, time:new Date(2017, NOV, 30)},
+    {name:"Metro Hack Night VII", id:"242908376", venue:"wmata", rsvps:153, time:new Date(2017, OCT, 25)},
+    {name:"Playing with Traffic III", id:"241151535", venue:"mobilitylab", rsvps:100, time:new Date(2017, AUG, 11)},
+    {name:"Bus Hack Night II", id:"237730535", venue:"wmata", rsvps:135, time:new Date(2017, APR, 11)},
+    {name:"CaBi Hack Night VII", id:"237181800", venue:"weworkwonderbread", rsvps:111, time:new Date(2017, MAR, 7)},
+    {name:"Walk Hack Night II", id:"236668724", venue:"weworkcrystalcity", rsvps:122, time:new Date(2017, FEB, 8)},
+    {name:"Bike Hack Night VII", id:"235892038", venue:"conventioncenter", rsvps:190, time:new Date(2017, JAN, 10)},
+    {name:"Metro Hack Night VI", id:"235160988", venue:"wmata", rsvps:146, time:new Date(2016, DEC, 14)},
+    {name:"CaBi Hack Night VI", id:"234652961", venue:"weworkcrystalcity", rsvps:98, time:new Date(2016, NOV, 3)},
+    {name:"Transportation + Urban Planning", id:"233717422", venue:"weworkcrystalcity", rsvps:133, time:new Date(2016, OCT, 14)},
+    {name:"Bike Hack Night VI", id:"231755172", venue:"wundergarten", rsvps:157, time:new Date(2016, SEP, 7)},
+    {name:"Playing with Traffic II", id:"232589028", venue:"weworkcrystalcity", rsvps:125, time:new Date(2016, AUG, 18)},
+    {name:"Portland Show & Tell", id:"232037344", venue:"hiltonportland", rsvps:104, time:new Date(2016, AUG, 2)},
+    {name:"Metro Hack Night V", id:"231353360", venue:"weworkcrystalcity", rsvps:104, time:new Date(2016, JUN, 28)},
+    {name:"Colorado Code Projects", id:"231142730", venue:"sparkboulder", rsvps:24, time:new Date(2016, MAY, 25)},
+    {name:"CaBi Hack Night V", id:"229819688", venue:"weworkcrystalcity", rsvps:110, time:new Date(2016, APR, 28)},
+    {name:"Bike Hack Night V", id:"228155655", venue:"weworkwonderbread", rsvps:130, time:new Date(2016, MAR, 8)},
+    {name:"Metro Hack Night IV", id:"228585705", venue:"wmata", rsvps:154, time:new Date(2016, FEB, 23)},
+    {name:"Bike Hack Night IV", id:"226911922", venue:"arl1776", rsvps:115, time:new Date(2015, DEC, 16)},
+    {name:"Playing with Traffic", id:"226241616", venue:"mobilitylab", rsvps:109, time:new Date(2015, NOV, 23)},
+    {name:"CaBi Hack Night IV", id:"225539297", venue:"arl1776", rsvps:126, time:new Date(2015, OCT, 19)},
+    {name:"Mapping Transit", id:"224881931", venue:"dc1776", rsvps:159, time:new Date(2015, SEP, 3)},
+    {name:"Walk Hack Night", id:"224308905", venue:"mobilitylab", rsvps:100, time:new Date(2015, AUG, 20)},
+    {name:"Transportation Tech in Baltimore", id:"222183536", venue:"hyattregencybaltimore", rsvps:75, time:new Date(2015, JUL, 27)},
+    {name:"Metro Hack Night III", id:"222624278", venue:"mobilitylab", rsvps:92, time:new Date(2015, JUN, 18)},
+    {name:"Bike Hack Night III", id:"220449315", venue:"renaissancedc", rsvps:161, time:new Date(2015, MAR, 11)},
+    {name:"Metro Hack Night II: Silver Line Edition", id:"218874680", venue:"mobilitylab", rsvps:90, time:new Date(2015, FEB, 12)},
+    {name:"Autotopia Night", id:"213357602", venue:"artisphere", rsvps:133, time:new Date(2015, JAN, 6)},
+    {name:"CaBi Hack Night III", id:"200661602", venue:"weworkwonderbread", rsvps:117, time:new Date(2014, DEC, 4)},
+    {name:"Bike Hack Night II", id:"200015252", venue:"mobilitylab", rsvps:82, time:new Date(2014, NOV, 6)},
+    {name:"Cool Mobility Apps: October Edition", id:"201709462", venue:"mobilitylab", rsvps:66, time:new Date(2014, OCT, 2)},
+    {name:"Cool Mobility Apps: September Edition", id:"202085172", venue:"mobilitylab", rsvps:58, time:new Date(2014, SEP, 4)},
+    {name:"CaBi Hack Night II", id:"189683512", venue:"mobilitylab", rsvps:55, time:new Date(2014, AUG, 7)},
+    {name:"OneBusAway Hack Night", id:"169484222", venue:"mobilitylab", rsvps:31, time:new Date(2014, JUN, 5)},
+    {name:"OneBusAway Workshop", id:"175391682", venue:"mobilitylab", rsvps:16, time:new Date(2014, MAY, 14)},
+    {name:"Bike Hack Night", id:"168585592", venue:"mobilitylab", rsvps:55, time:new Date(2014, MAY, 1)},
+    {name:"CUTR OneBusAway Webcast", id:"177145592", venue:"mobilitylab", rsvps:10, time:new Date(2014, APR, 17)},
+    {name:"Bus Hack Night", id:"167251552", venue:"mobilitylab", rsvps:48, time:new Date(2014, APR, 3)},
+    {name:"Transportation + Health", id:"158430542", venue:"kaiser", rsvps:97, time:new Date(2014, MAR, 6)},
+    {name:"Transportation + Health Code Session", id:"165968842", venue:"mobilitylab", rsvps:12, time:new Date(2014, FEB, 16)},
+    {name:"Multi-Modal Show & Tell", id:"157388502", venue:"mobilitylab", rsvps:50, time:new Date(2014, FEB, 6)},
+    {name:"Metro Hack Night", id:"154437572", venue:"mobilitylab", rsvps:50, time:new Date(2014, JAN, 2)},
+    {name:"CaBi Hack Night", id:"150759942", venue:"mobilitylab", rsvps:49, time:new Date(2013, DEC, 5)},
+  ];
+  var bodyContent = "<table>";
+  var yeses = 0;
+  var eventCount = json.length;
+  for (var i = 0; i < eventCount; i++) {
+    var event = json[i];
+    var venue = venues[event.venue];
+    var url = "https://www.meetup.com/Transportation-Techies/events/" + event.id + "/";
+    var eventNumber = "<td>#" + (eventCount - i) + "</td>";
+    var eventName = "<td><div class='maxWidth25pct'><a href='" + url + "'>" + event.name + "</a></div></td>";
+    var eventRSVPs = "<td align='right'>" + event.rsvps + "</td>";
+    var eventVenue = "<td><div class='maxWidth25pct'>" + venue.name + "</div></td>";
+    var eventCity = "<td>" + venue.city + ", " + venue.state + "</td>";
+    var eventDate = "<td title='Meetup #" + (eventCount - i)+ "'>" + dateStr(event.time) + "</td>";
+    var row = "<tr>" + eventNumber + eventName + eventRSVPs + eventVenue + eventCity + eventDate + "</tr>";
+    bodyContent += row;
+    }
+  title.innerHTML = "<a href='https://www.meetup.com/Transportation-Techies/'>Transportation Techies</a> Meetups";
+  bodyContent += "</table>";
+  var main = document.getElementById('main');
+  main.innerHTML = bodyContent;
+  // Get the top events:
+  var events = json.map(event => ({name: event.name, yeses: parseInt(event.rsvps)}));
+  events.sort((a, b) => b.yeses - a.yeses);
+  console.log(events);
+  }
+
+function initialize() {
+  var title = document.getElementById('title');
+  title.innerHTML = "Group: Transportation-Techies";
+  postRSVPs();
+  }
+</script>
+</head>
+<body onload="initialize()">
+<div id=center >
+  <div id=title >Meetup</div>
+  <div id=main >
+    <i>Getting events...</i>
+  </div>
+</div>
+</body>
+</html>

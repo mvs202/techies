@@ -1,0 +1,132 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Walk Hack Night Speakers</title>
+<base target="_blank">
+<style>
+html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, div, dt, dd, p, blockquote, pre, form, table, th, td, input {
+  font-family: verdana, sans-serif;
+  font-size: 12pt;
+  color: #000000;
+  }
+body {
+  margin: 0;
+  padding: 0;
+  background: #83a9DE;
+  background: linear-gradient(to left top, #E8BBE4, #C8F7FF) fixed;
+  display: flex;
+  flex-wrap: wrap;
+  }
+div {
+  flex-basis: 440px;
+  flex-grow: 1;
+  padding: 8px;
+  transition: background-color 0.4s ease;
+  }
+img {
+  width: 240px;
+  padding-right: 4px;
+  padding-bottom: 4px;
+  float: left;
+  }
+h1, .header {
+  font-size: 24pt;
+  font-weight: bold;
+  }
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="https://www.meetup.com/Transportation-Techies/">Transportation Techies</a>
+  <p>
+  <h1>Walk Hack Night Speakers</h1>
+</div>
+<div class="header ii">
+  <a href="https://www.meetup.com/Transportation-Techies/events/245353650/"><b>Walk Hack Night II</b></a>
+  <p>
+  Wednesday, February 8, 2017
+</div>
+<div class="ii">
+  <img src="https://c1.staticflickr.com/3/2718/32658803492_17b35dfdcb_m.jpg">
+  <a href="http://www.arch.virginia.edu/faculty/Andrew_Mondschein">Andrew Mondschein</a> showed how UVA is using wearable sensors to measure dimensions of walkability in Tysons, VA and beyond
+</div>
+<div class="ii">
+  <img src="https://c1.staticflickr.com/1/722/32771627496_a9ca842404_m.jpg">
+  Amir Farhangi and Matt Triner of <a href="http://district.ninja/">District Ninja</a> shared their <a href="http://district.ninja/the-vision-zero-initiative-part-1-district-of-pedestrians/">District of Pedestrians</a> data visualizations
+</div>
+<div class="ii">
+  <img src="https://c1.staticflickr.com/3/2634/32812221065_8a9ae41dd0_m.jpg">
+  Aaron Ogle showed how he built walkshed.js, measuring pedestrian access using raster analysis in JavaScript
+</div>
+<div class="ii">
+  <img src="https://c1.staticflickr.com/1/542/31998340733_c50227ccea_m.jpg">
+  Manaswi Saha updated us on <a href="https://sidewalk.umiacs.umd.edu/">Project Sidewalk</a>
+</div>
+<div class="ii">
+  <img src="https://c1.staticflickr.com/1/432/32660037422_e107c0f647_m.jpg">
+  Michael Schade showed how he used Walkscore's API to build his <a href="http://mvjantzen.com/mobility/walkshed.html">Arlington Walkshed</a> program
+</div>
+<div class="ii">
+  <img src="https://c1.staticflickr.com/3/2505/32705537891_69da861418_m.jpg">
+  Chris Fricke mused on indoor positioning and walkability
+</div>
+<div class="header i">
+  <a href="https://www.meetup.com/Transportation-Techies/events/245353650/"><b>Walk Hack Night I</b></a>
+  <p>
+  Thursday, August 20, 2015
+</div>
+<div class="i">
+  <img src="https://c1.staticflickr.com/1/601/20590200520_3111182fb5_m.jpg">
+  James Graham will demo DDOT's <a href="http://visionzero.ddot.dc.gov/VisionZero/">VisionZero</a> app
+</div>
+<div class="i">
+  <img src="https://c1.staticflickr.com/1/721/20166279933_0dff212b30_m.jpg">
+  Stephanie Nguyen will demo the <a href="http://www.landmarkdirections.com/">Landmark</a> app for pedestrian-focused directions
+</div>
+<div class="i">
+  <img src="https://c1.staticflickr.com/1/592/20167754063_534f4fe98c_m.jpg">
+  Ted Eytan will show how the KP Center for Total Health uses infrared sensors and visualization tools to model trail use and promote walking in NoMA
+</div>
+<div class="i">
+  <img src="https://c2.staticflickr.com/6/5788/20607357230_84c3453e25_m.jpg">
+  Chris Fricke will show how GISInc analyzes indoor traffic patterns
+</div>
+<div class="i">
+  <img src="https://c2.staticflickr.com/6/5834/20802532031_5b36607d02_m.jpg">
+  Fraser McLaughlin will describe Eco-Counter technologies being used to count pedestrians in Arlington and around the world, and discuss how data are organized and validated
+</div>
+<div class="i">
+  <img src="https://c2.staticflickr.com/6/5779/20609288249_814e6f3c00_m.jpg">
+  Stanislav Parfenov will show us how <a href="http://www.placemeter.com/">Placemeter</a> analyzes pedestrian movement across the urban landscape
+</div>
+<div class="i">
+  <img src="https://c2.staticflickr.com/6/5646/20609714029_a3256a5004_m.jpg">
+  Kotaro Hara will show how he uses Google Street View to make sidewalks more accessible
+</div>
+<div>
+  <!-- empty div so last row of flexbox doesn't stretch -->
+</div>
+<div>
+  <!-- empty div so last row of flexbox doesn't stretch -->
+</div>
+<div>
+  <!-- empty div so last row of flexbox doesn't stretch -->
+</div>
+<div>
+  <!-- empty div so last row of flexbox doesn't stretch -->
+</div>
+<script>
+function addHover(group) {
+  const hoverGroup = Array.prototype.slice.call(document.getElementsByClassName(group));
+  hoverGroup.forEach((e) => {
+    e.addEventListener("mouseover", () => hoverGroup.forEach((e) => e.style.backgroundColor = "rgba(255,255,255,0.3)"));
+    e.addEventListener("mouseout", () => hoverGroup.forEach((e) => e.style.backgroundColor = "transparent"));
+    });
+  }
+
+addHover("i");
+addHover("ii");
+</script>
+</body>
+</html>
