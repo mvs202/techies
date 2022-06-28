@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Metro Hack Night X</title>
+<style>
+@font-face {
+  font-family: 'BPdotsBold';
+  src: url('BPdotsBold-webfont.woff') format('woff');
+  }
+html, body {
+  margin: 0px;
+  height: 100%;
+  background-color: #000000;
+  color: #FC7155;
+  font-family: BPdotsBold, sans-serif;
+  text-shadow: 0px 0px 12px rgba(250,98,75,0.6), 6px 6px 12px rgba(250,98,75,0.6), 6px -6px 12px rgba(250,98,75,0.6), -6px -6px 12px rgba(250,98,75,0.6), -6px 6px 12px rgba(250,98,75,0.6);
+  font-size: 6.5vw;
+  line-height: 98%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  }
+.yellow {
+  color: #FAF9A2;
+  }
+.medium {
+  font-size: 4.8vw;
+  line-height: 98%;
+  }
+.small {
+  font-size: 4.2vw;
+  line-height: 98%;
+  }
+.small td {
+  height: 4.0vw;
+  }
+#notice {
+  transition: 0.6s;
+  position: absolute;
+  top: -20.0vw;
+  left: 20px;
+  font-family: sans-serif;
+  font-style: italic;
+  font-size: 3.0vw;
+  color: #FFFFFF;
+  }
+</style>
+<script>
+var slideIndex = 0;
+var slides = [];
+var animate = null;
+
+slides.push(
+  "<table cellpadding=0 cellspacing=0 border=0 class=small >" +
+  "<tr><td colspan=3 >#METROHACKNIGHT &nbsp; SPEAKERS</td></tr>" +
+  "<tr><td class=yellow >Sal</td>    <td class=yellow >Zahedi</td>   <td class=yellow >@WMATA</td></tr>" +
+  "<tr><td class=yellow >Michael</td><td class=yellow >Eichler</td>  <td class=yellow >@PlanItMichael</td></tr>" +
+  "<tr><td class=yellow >Cole</td>   <td class=yellow >McCarren</td> <td class=yellow >@colemccarren</td></tr>" +
+  "<tr><td class=yellow >Mike</td>   <td class=yellow >Helta</td>    <td class=yellow >@mtamaryland</td></tr>" +
+  "<tr><td class=yellow >Tanay</td>  <td class=yellow >Gupta</td>    <td class=yellow >@mtamaryland</td></tr>" +
+  "<tr><td class=yellow >Michael</td><td class=yellow >Perkins</td>  <td class=yellow >@perkinsms</td></tr>" +
+  "<tr><td class=yellow >Michael</td><td class=yellow >Johnson</td>  <td class=yellow ></td></tr>" +
+  "<tr><td class=yellow >Matthew&nbsp;&nbsp;</td><td class=yellow >Stevenson&nbsp;&nbsp;</td><td class=yellow >@dcmjs</td></tr>" +
+  "</table>");
+slides.push(
+  "<table cellpadding=0 cellspacing=0 border=0 class=medium >" +
+  "<tr><td colspan=3 >#METROHACKNIGHT HOST + SPONSORS</td></tr>" +
+  "<tr><td class=yellow class=small >Michael&nbsp;</td><td class=yellow >Schade&nbsp;</td><td class=yellow >@mvs202</td></tr>" +
+  "<tr><td class=yellow >Metrobar&nbsp; </td><td class=yellow > </td><td class=yellow >@metrobardc</td></tr>" +
+  "<tr><td class=yellow >Foursquare&nbsp;</td><td class=yellow >ITP</td><td class=yellow >@FoursquareITP</td></tr>" +
+  "<tr><td class=yellow >Jun 29</td><td class=yellow >2022</td><td class=yellow ></td></tr>" +
+  "</table>");
+slides.push(
+	"<table cellpadding=0 cellspacing=0 border=0 >" +
+	"<tr><td colspan=4 >TRANSPORTATION&nbsp;TECHIES</td></tr>" +
+	"<tr><td class=yellow >Metro&nbsp;</td><td class=yellow >Hack&nbsp;</td><td class=yellow >Night&nbsp;</td><td class=yellow >X</td></tr>" +
+  "<tr><td class=yellow >Metro&nbsp;</td><td class=yellow >Hack&nbsp;</td><td class=yellow >Night&nbsp;</td><td class=yellow >X</td></tr>" +
+	"<tr><td class=yellow >Metro&nbsp;</td><td class=yellow >Hack&nbsp;</td><td class=yellow >Night&nbsp;</td><td class=yellow >X</td></tr>" +
+	"</table>");
+
+function nextPage() {
+  document.getElementById("content").innerHTML = slides[slideIndex];
+	slideIndex = (slideIndex + 1) % slides.length;
+  }
+
+function init() {
+	nextPage();
+	if (window.location.href.indexOf('?') > 0) {   // see if "?" was added to URL
+		animate = window.setInterval(nextPage, 1000);
+		}
+	else {
+	  addNote('Click/keypress/touch to show next slide<br>Hit space bar to toggle auto-advance');
+		animate = null;
+    }
+  }
+
+function removeNote() {
+	document.getElementById("notice").style.top = "-20.0vw";
+  }
+
+function addNote(blurb) {
+  var notice = document.getElementById("notice");
+	notice.innerHTML = blurb;
+	notice.style.top = "20px";
+	window.setTimeout(removeNote, 5000);
+  }
+
+function checkInput(e) {
+	var keynum = event.which || event.keyCode;
+	console.log(keynum)
+	if (keynum == 32) {  // space
+		if (animate == null) {
+			animate = window.setInterval(nextPage, 20000);
+	    addNote('Auto-advance is on<br>Hit space bar to turn off');
+		  }
+		else {
+			clearInterval(animate);
+			animate = null;
+	    addNote('Auto-advance is off<br>Hit space bar to turn on');
+      }
+	  }
+	else {
+		nextPage();
+  	}
+	}
+document.addEventListener('DOMContentLoaded', init, false);
+</script>
+</head>
+<body onkeypress="checkInput()" onclick="nextPage()" ontouchstart="nextPage()">
+<div id=content ></div>
+<div id=notice ></div>
+</body>
+</html>
