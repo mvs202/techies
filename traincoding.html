@@ -1,0 +1,97 @@
+<!DOCTYPE>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Traincoding Speakers</title>
+<base target="_blank">
+<style>
+html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, div, dt, dd, p, blockquote, pre, form, table, th, td, input {
+  font-family: verdana, sans-serif;
+  font-size: 12pt;
+  color: #000000;
+  }
+body {
+  margin: 0;
+  padding: 0;
+  background: #83a9DE;
+  background: linear-gradient(to left top, #e65c00, #F9D423) fixed;
+  display: flex;
+  flex-wrap: wrap;
+  }
+div {
+  flex-basis: 440px;
+  flex-grow: 1;
+  padding: 8px;
+  transition: background-color 0.8s ease;
+  }
+img {
+  width: 240px;
+  padding-right: 4px;
+  padding-bottom: 4px;
+  float: left;
+  }
+h1, .header {
+  font-size: 24pt;
+  font-weight: bold;
+  }
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="https://www.meetup.com/Transportation-Techies/">Transportation Techies</a>
+  <p>
+  <h1>Traincoding Speakers</h1>
+</div>
+<div class="header i">
+  <a href="https://www.meetup.com/Transportation-Techies/events/251055505/"><b>Traincoding Show & Tell</b></a>
+  <p>
+  January 2, 2018
+</div>
+<div class="i">
+  <img src="https://live.staticflickr.com/1864/43470676925_8ca685cc65_m.jpg">
+  Don Varley: A visual overview of railroad trespassing incidents
+</div>
+<div class="i">
+  <img src="https://live.staticflickr.com/1876/44333942232_52bac786d0_m.jpg">
+  Christopher Juckins: <a href="https://juckins.net/asmad">juckins.net/asmad</a>
+</div>
+<div class="i">
+  <img src="https://live.staticflickr.com/1849/43486380845_689a889ef2_m.jpg">
+  Sunny Zheng: <a href="https://asm.transitdocs.com">asm.transitdocs.com</a>
+</div>
+<div>
+  <!-- empty div so last row of flexbox doesn't stretch -->
+</div>
+<div>
+  <!-- empty div so last row of flexbox doesn't stretch -->
+</div>
+<div>
+  <!-- empty div so last row of flexbox doesn't stretch -->
+</div>
+<div>
+  <!-- empty div so last row of flexbox doesn't stretch -->
+</div>
+<script>
+function addHover(group) {
+  const hoverGroup = Array.prototype.slice.call(document.getElementsByClassName(group));
+  hoverGroup.forEach((e) => {
+    e.addEventListener("mouseover", () => hoverGroup.forEach((e) => e.style.backgroundColor = "rgba(255,255,255,0.3)"));
+    e.addEventListener("mouseout", () => hoverGroup.forEach((e) => e.style.backgroundColor = "transparent"));
+    });
+  }
+
+addHover("i");
+addHover("ii");
+addHover("iii");
+addHover("iv");
+addHover("v");
+addHover("p");
+addHover("vi");
+addHover("vii");
+addHover("viii");
+addHover("ix");
+addHover("x");
+addHover("xi");
+</script>
+</body>
+</html>
